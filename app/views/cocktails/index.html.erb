@@ -1,7 +1,27 @@
-<h1>Fancy Cocktails!</h1>
+<div class="banner" style="background-image: url(<%= image_path "banner_image.jpg"  %>)">
 
-<ul>
-  <%= @cocktails.each do |cocktail| %>
-    <li>cocktail.name</li>
-  <% end %>
-</ul>
+  <div class="container">
+    <div class="title-container text-center">
+      <h1>Will's Cocktails</h1>
+    </div>
+    <div class="cards">
+      <% @cocktails.each do |cocktail| %>
+        <div class="col-xs-12 col-sm-3">
+          <div class="card">
+            <div class="content">
+              <h3><%= link_to cocktail.name, cocktail_path(cocktail) %></h3>
+              <ul>
+                <% cocktail.doses.each do |d| %>
+                  <li><%= d.description %> of <%= d.ingredient.name %></li>
+                <% end %>
+              </ul>
+            </div>
+              <%= link_to "Delete", cocktail_path(cocktail), method: :delete %></li>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
